@@ -1,21 +1,30 @@
-let playerWins = 0;
-let computerWins = 0;
+let playerPoints = 0;
+let computerPoints = 0;
 
 function getComputerChoice() {
-    // 0 is rock, 1 is paper, 2 is scissors
     choice = Math.floor(Math.random() * 3);
+    if(choice == 0) {
+        choice = 'rock'
+    }
+    else if(choice == 1) {
+        choice = 'paper'
+    }
+    else if(choice == 2) {
+        choice = 'scissors'
+    }
     return choice;
 }
 
 function startRound(playerChoice) {
-    player = playerChoice
-    computer = getComputerChoice()
-    if(computer == 0 && player == 1 || computer == 1 && player == 2
-        || computer == 2 && player == 0) {
+    let player = playerChoice
+    let computer = getComputerChoice()
+    document.getElementById("choiceInfo").textContent="The player chose " + player + ", the computer chose " + computer
+    if(computer == 'rock' && player == 'paper' || computer == 'paper' && player == 'scissors'
+        || computer == 'scissors' && player == 'rock') {
         playerVictory()
     } 
-    else if(computer == 0 && player == 2 || computer == 1 && player == 0
-        || computer == 2 && player == 1) {
+    else if(computer == 'rock' && player == 'scissors' || computer == 'paper' && player == 'rock'
+        || computer == 'scissors' && player == 'paper') {
         computerVictory()
     }
     else {
@@ -24,21 +33,49 @@ function startRound(playerChoice) {
 }
 
 function playerVictory() {
-    console.log("You won!")
-    playerWins++;
-    console.log("Your wins: " + playerWins + " | Computer wins: " + 
-    computerWins)
+    document.getElementById("declareRound").textContent="You won this round!"
+    playerPoints++;
+    document.getElementById("playerPoints").textContent="Player: " + playerPoints
+    if(playerPoints == 5) {
+        endGame('player')
+    }
 }
 
 function computerVictory() {
-    console.log("You lost!")
-    computerWins++;
-    console.log("Your wins: " + playerWins + " | Computer wins: " + 
-                computerWins)
+    document.getElementById("declareRound").textContent="The computer won this round."
+    computerPoints++;
+    document.getElementById("computerPoints").textContent="Computer: " + computerPoints
+    if(computerPoints == 5) {
+        endGame('computer')
+    }
 }
 
 function tie(){
-    console.log("Tie!")
-    console.log("Your wins: " + playerWins + " | Computer wins: " + 
-    computerWins)
+    document.getElementById("declareRound").textContent="Tied round!"
+}
+
+function endGame(winner) {
+    pointDifference = Math.abs(playerPoints - computerPoints)
+    if(winner == 'player' && (pointDifference <= 5)) {
+        document.getElementById("declareMatch").textContent="You wiped the floor with them!"
+    } 
+    if(winner == 'player' && (pointDifference < 4)) {
+        document.getElementById("declareMatch").textContent="You win the match!"
+    }
+    if(winner == 'player' && (pointDifference < 2)) {
+        document.getElementById("declareMatch").textContent="You win! That was close..."
+    }
+    if(winner == 'computer' && (pointDifference <= 5)) {
+        document.getElementById("declareMatch").textContent="A massive defeat! Bow down to the machine."
+    } 
+    if(winner == 'computer' && (pointDifference < 4)) {
+        document.getElementById("declareMatch").textContent="You lose the match."
+    }
+    if(winner == 'computer' && (pointDifference < 2)) {
+        document.getElementById("declareMatch").textContent="A devastatingly close loss..."
+    }
+    document.getElementById('choice1').setAttribute('disabled',true)
+    document.getElementById('choice2').setAttribute('disabled',true)
+    document.getElementById('choice3').setAttribute('disabled',true)
+    document.getElementById('playAgain').removeAttribute("hidden")
 }
