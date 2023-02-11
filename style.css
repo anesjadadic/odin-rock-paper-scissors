@@ -1,15 +1,66 @@
 body {
     text-align: center;
+    background: linear-gradient(to top, rgb(46, 53, 44), rgb(105, 124, 100));
+    background-attachment: fixed;
+}
+
+.container {
+    background-color: rgb(206, 206, 206);
+    width: 850px;
+    margin: auto;
+    border: solid black 5px;
+    padding-bottom: 30px;
+}
+
+.title {
+    background-color: rgb(109, 109, 109);
+    border-bottom: solid black;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+#declareRound {
+    background-color: rgb(170, 170, 170);
+    padding: 6px 0px 6px 0px;
+}
+
+#declareMatch {
+    padding: 6px 0px 6px 0px;
 }
 
 button {
-    height: 70px;
-    width: 100px;
+    height: 100px;
+    width: 120px;
     font-size: 18px;
     font-weight: bold;
-    background-color: rgb(86, 139, 156);
+    background-color: rgb(165, 165, 165);
+    border: solid rgb(0, 0, 0);
+    box-shadow: 0 7px #000000;
 }
 
 button:hover {
-    background-color: rgb(109, 172, 194);
+    filter: brightness(90%);
+}
+
+button:active {
+    box-shadow: 0 3px #000000;
+    transform: translateY(4px);
+}
+
+#playAgain {
+    width: 150px;
+    height: 50px;
+}
+
+#choice1 {
+    background-image: url(rock.jpg);
+}
+
+#choice2 {
+    background-image: url(paper.jpg);
+}
+
+#choice3 {
+    background-image: url(scissors.jpg);
 }

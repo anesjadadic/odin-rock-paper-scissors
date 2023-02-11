@@ -9,15 +9,20 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <button id="choice1" onclick="startRound('rock')">Rock</button>
-    <button id="choice2" onclick="startRound('paper')">Paper</button>
-    <button id="choice3" onclick="startRound('scissors')">Scissors</button>
-    <h1 id="choiceInfo"></h1>
-    <h1 id="declareRound">Press an option to start!</h1>
-    <h2 id="playerPoints">Player: 0</h2>
-    <h2 id="computerPoints">Computer: 0</h2>
-    <h1 id="declareMatch"></h1>
-    <button id="playAgain" onClick="window.location.reload();" hidden>Play Again?</button>
+    <div class="container">
+        <div class="title">
+            <h1>ROCK PAPER SCISSORS</h1>
+        </div>
+        <br>
+        <button id="choice1" onclick="startRound('rock')">ROCK</button>
+        <button id="choice2" onclick="startRound('paper')">PAPER</button>
+        <button id="choice3" onclick="startRound('scissors')">SCISSORS</button>
+        <h1 id="choiceInfo">First to 5 wins</h1>
+        <h1 id="declareRound">Press an option to start!</h1>
+        <h2 id="playerPoints">You: 0</h2>
+        <h2 id="computerPoints">Computer: 0</h2>
+        <h1 id="declareMatch" display:none></h1>
+        <button id="playAgain" onClick="window.location.reload();" hidden>Play Again?</button>
+    </div>
 </body>
 </html>
